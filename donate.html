@@ -1,10 +1,7 @@
 <!-- This page is a mockup for the donation page itself. The bottom donate button uses the code to go straight to payapl. The button uses an image of the better looking donate button. --> 
 
-
-
-
-<!DOCTYPE html>
-
+<!doctype html>
+<html lang="en">
 <head>
 
     <meta charset="utf-8">
@@ -15,7 +12,7 @@
     <!-- Styles -->
     <link href="css/reset.css" rel="stylesheet" media="screen">         
     <link href="css/base.css" rel="stylesheet" media="screen">   
-    <link href="css/custom.css" rel="stylesheet" media="screen">               
+    <!--<link href="css/custom.css" rel="stylesheet" media="screen">               -->
     <link href="https://fonts.googleapis.com/css?family=Arvo:400,400i,700,700i|Damion|Open+Sans:400,400i,700,700i,800,800i" rel="stylesheet">
     <link rel="icon" type="image/ico" href="images/favicon.ico"/>
 
@@ -225,36 +222,189 @@
         </header> 
     </div> <!-- header-container -->    
 
+	<style>
+		h1 {
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		strong {
+			font-weight: bold;
+		}
+
+		em {
+			font-style: italic;
+		}
+
+		.toggleable {
+			position: relative;
+		}
+
+			.toggleable:before {
+				content: "▶︎";
+				position: absolute;
+				top: 1em;
+				left: -1.5em;
+				font-size: 0.75em;
+				color: #999;
+				transform: rotate(0deg);
+				transition: transform 240ms ease;
+			}
+
+			.toggleable.open:before {
+				transform: rotate(90deg);
+			}
+
+		.donate-now {
+			float: right;
+			margin: 0 0 0.5em 1em;
+		}
+
+		section + h3 {
+			margin-top: 1.125em;
+		}
+
+		input[type="submit"] {
+			font-family: Open Sans, sans-serif;
+			font-weight: bold;
+			letter-spacing: -1px;
+			padding: 0.4em 1.25em 0.45em;
+			border-radius: 0.25em;
+			border: none;
+			background: #619f7b;
+			color: #fff;
+			font-size: 1.25em;
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+			cursor: pointer;
+		}
+	</style>
+
     <div class="overall-container">             
         <div class="container">
             <div role="banner">
-             <h1>Pay it Forward</h1>
+             <h1>Donate Now and Pay It Forward</h1>
             </div>
         </div> <!-- container -->
     </div> <!-- overall-container -->   
 
     <div class="main-container">            
         <div class="container">
-        
-            <h3>Doante to the Give Forward Student Loan Fund</h3>
-
             <img src="perch/resources/yourdonation.png" alt="Graphic of students a part of the Give Forward Student Fund"/>
-
-            <p>Frame this as the $60K being the foundation of the value proposition. This thing costs $60K and we know that is a bunch of money. The good news is you can "pay it forward" by helping a student who otherwise couldn't afford it attend Center Centre.</p>
         
-            
-            <h4>Make a donation at Paypal</h4>
-       
-            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                <input type="hidden" name="cmd" value="_s-xclick">
-                <input type="hidden" name="hosted_button_id" value="V842DEU58QQNE">
-                <input type="image" src="perch/resources/donate_button.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-                <img alt="" border="0" src="perch/resources/donate_button.png" width="1" height="1">
-            </form>
+			<p>
+				We’ve designed a unique student loan program to help our students get the funding 
+				needed to become awesome UX design professionals. This program, which we call the 
+				<strong><em>Give Forward Student Loan Fund</em></strong>, is powered by 
+				contributions from us, partner corporations, folks in our local community, and 
+				people like you that want to see our industry improve by empowering those 
+				interested in making things better.
+			</p>
 
-            <p>(Just need to fix button to float left instead of right.) --> </p>
+			<section class="collapsible">
+				<h4>How will my donation be used?</h4>
 
+				<div class="collapsed">
+					<p>
+						Your entire donation (minus the fees PayPal charges us) goes directly into 
+						the Give&nbsp;Forward Student Loan&nbsp;Fund.
+					</p>
+				</div>
+			</section>
 
+			<section class="collapsible">
+				<h4>What exactly is the Give Forward Student Loan Fund?</h4>
+
+				<div class="collapsed">
+					<p>
+						The Give Forward Student Loan Fund is a nonprofit fund that allows
+						qualifying students to borrow what they need to pay for tuition at
+						Center Centre. In addition to borrowing up to the full tuition cost
+						($59,880), students can also borrow an additional $20,000 per year of
+						our two-year program to help cover living expenses, which goes a long
+						way in&nbsp;Chattanooga.
+					</p>
+
+					<p>
+						We’ve intentionally designed these loans to focus on our students
+						first. Each loan is interest-free while a student is enrolled in our
+						program and actively taking courses. Interest doesn’t start to accrue
+						until 90 days after a student&nbsp;graduates.
+					</p>
+
+					<p>
+						The interest rate on the loan is low and fixed. Once repayment begins,
+						graduates may take up to 20 years to pay off the loan, keeping monthly
+						payments manageable. As students pay these loans back, their payments
+						go right back into the fund for use by future&nbsp;students.
+					</p>
+				</div>
+			</section>
+
+			<section class="collapsible">
+				<h4>Who services the loan fund?</h4>
+
+				<div class="collapsed">
+					<p>
+						The Give Forward Student Loan Fund is serviced through 
+						<a href="http://cneinc.org">Chattanooga Neighborhood Enterprise</a> (CNE). 
+						We chose CNE because of their extensive experience in gracious approaches
+						to&nbsp;lending.
+					</p>
+
+					<p>
+						CNE builds relationships with their customers, meaning that our students
+						will get to know their lending servicers by name. Students that borrow from
+						the Give Forward Student Loan Fund will work directly with CNE, getting the
+						flexibility needed to handle unforeseen challenges making a payment or
+						adjusting their&nbsp;loan.
+					</p>
+				</div>
+			</section>
+
+			<section class="collapsible">
+				<h4>Is my donation tax-deductible?</h4>
+
+				<div class="collapsed">
+					<p>
+						CNE is an approved 501(c)(e) nonprofit corporation, but we cannot advise
+						you on any tax questions about your contribution. Please consult with your
+						tax advisor regarding the proper handling of this gift on your tax return,
+						or for any tax-related&nbsp;questions.
+					</p>
+				</div>
+			</section>
+
+			<h3>This all sounds great! How can I help?</h3>
+
+			<p>
+				There are two things you can do to help us out:
+			</p>
+
+			<ol>
+				<li>
+					<strong><em>Donate to the Give Forward Student Loan Fund:</em></strong><br>
+					<form class="donate-now" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+						<input type="hidden" name="cmd" value="_s-xclick">
+						<input type="hidden" name="hosted_button_id" value="V842DEU58QQNE">
+						<input type="submit" value="Donate Now" name="submit">
+						<img alt="Donate Now" border="0" src="perch/resources/donate_button.png" width="1" height="1">
+					</form>
+					use this button; you’ll be taken to a PayPal page where you can donate as much
+					as you'd like, either paying with your PayPal account or the debit/credit card
+					of your&nbsp;choice.
+				</li>
+
+				<li>
+					<strong><em>Spread the word about what we’re doing:</em></strong><br>
+					tell your friends, families, colleagues, and everyone that might be interested in what we're trying to accomplish. We can’t do this alone! Share this page on Twitter, Facebook, LinkedIn, or by email.
+				</li>
+			</ol>
+
+			<p>
+				Thank you so much for joining our cause! Together, we’re ridding the world of bad
+				design, one awesome Center Centre graduate at a&nbsp;time.
+			</p>
         </div> <!-- container -->
     </div> <!-- main-container -->  
 
@@ -280,9 +430,42 @@
     <!-- javascript -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script>
+			var collapsibleSections = {
+				init: function() {
+					$('section.collapsible .collapsed').hide();
+					$('section.collapsible > h4').wrapInner('<a href="#"></a>').addClass('toggleable');
+
+					this.bindEvents();
+				},
+
+				bindEvents: function() {
+					$('section.collapsible')
+						.on('click', 'h4 a', function(e) {
+							var heading, siblings;
+
+							e.stopPropagation();
+							e.preventDefault();
+
+							// find sibling
+							heading = $(this).closest('h4');
+							siblings = heading.siblings('.collapsed');
+
+							if (siblings.css('display') === 'none') {
+								// this is closed, we need to expand it
+								siblings.slideDown(240, 'swing');
+								heading.addClass('open');
+							} else {
+								// this is open, we need to collapse it
+								siblings.slideUp(240, 'swing');
+								heading.removeClass('open');
+							}
+						});
+				}
+			};
+
             $(document).ready(function(){
                 $('a.descToggle').click(hideshow);
-            
+				collapsibleSections.init();
             });
 
             function hideshow() {
@@ -295,3 +478,5 @@
          </script>  
         </footer>
     </div> <!-- footer-container -->
+</body>
+</html>
