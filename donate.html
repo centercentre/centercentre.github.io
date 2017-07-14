@@ -257,7 +257,7 @@
 
 		.donate-now {
 			float: right;
-			margin: 0 0 0.5em 1em;
+			margin: 0.5em 0 0.5em 1.5em;
 		}
 
 		section + h3 {
@@ -278,6 +278,21 @@
 			-moz-osx-font-smoothing: grayscale;
 			cursor: pointer;
 		}
+
+		.collapsible h4 button {
+			border: none;
+			padding: 0;
+			font-size: 1em;
+			background: transparent;
+			font-family: Arvo, serif;
+			color: #00a3b4;
+		}
+
+			.collapsible h4 button:hover,
+			.collapsible h4 button:focus,
+			.collapsible h4 button:active {
+				color: #9c386b;
+			}
 	</style>
 
     <div class="overall-container">             
@@ -292,6 +307,13 @@
         <div class="container">
             <img src="perch/resources/yourdonation.png" alt="Graphic of students a part of the Give Forward Student Fund"/>
         
+			<form class="donate-now" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+				<input type="hidden" name="cmd" value="_s-xclick">
+				<input type="hidden" name="hosted_button_id" value="V842DEU58QQNE">
+				<input type="submit" value="Donate Now" name="submit">
+				<img alt="Donate Now" border="0" src="perch/resources/donate_button.png" width="1" height="1">
+			</form>
+
 			<p>
 				We’ve designed a unique student loan program to help our students get the funding 
 				needed to become awesome UX design professionals. This program, which we call the 
@@ -301,7 +323,7 @@
 				interested in making things better.
 			</p>
 
-			<section class="collapsible">
+			<section class="collapsible" id="use">
 				<h4>How will my donation be used?</h4>
 
 				<div class="collapsed">
@@ -312,7 +334,7 @@
 				</div>
 			</section>
 
-			<section class="collapsible">
+			<section class="collapsible" id="what">
 				<h4>What exactly is the Give Forward Student Loan Fund?</h4>
 
 				<div class="collapsed">
@@ -341,7 +363,7 @@
 				</div>
 			</section>
 
-			<section class="collapsible">
+			<section class="collapsible" id="servicer">
 				<h4>Who services the loan fund?</h4>
 
 				<div class="collapsed">
@@ -362,7 +384,7 @@
 				</div>
 			</section>
 
-			<section class="collapsible">
+			<section class="collapsible" id="deductible">
 				<h4>Is my donation tax-deductible?</h4>
 
 				<div class="collapsed">
@@ -433,14 +455,23 @@
 			var collapsibleSections = {
 				init: function() {
 					$('section.collapsible .collapsed').hide();
-					$('section.collapsible > h4').wrapInner('<a href="#"></a>').addClass('toggleable');
+					$('section.collapsible > h4').each(function() {
+						var id = $(this).closest('section').attr('id');
+
+						$(this)
+							.wrapInner('<button data-action="disclosure" aria-controls="' + id + '-display" aria-expanded="false"></button>')
+							.addClass('toggleable')
+							.siblings('.collapsed')
+								.attr('id', id + '-display')
+								.attr('aria-hidden', true);
+					});
 
 					this.bindEvents();
 				},
 
 				bindEvents: function() {
 					$('section.collapsible')
-						.on('click', 'h4 a', function(e) {
+						.on('click', 'h4 button', function(e) {
 							var heading, siblings;
 
 							e.stopPropagation();
@@ -452,12 +483,12 @@
 
 							if (siblings.css('display') === 'none') {
 								// this is closed, we need to expand it
-								siblings.slideDown(240, 'swing');
-								heading.addClass('open');
+								siblings.slideDown(240, 'swing').attr('aria-hidden', false);
+								heading.addClass('open').find('button').attr('aria-expanded', true);
 							} else {
 								// this is open, we need to collapse it
-								siblings.slideUp(240, 'swing');
-								heading.removeClass('open');
+								siblings.slideUp(240, 'swing').attr('aria-hidden', true);
+								heading.removeClass('open').find('button').attr('aria-expanded', false);
 							}
 						});
 				}
